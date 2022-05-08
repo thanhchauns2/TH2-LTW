@@ -1,7 +1,6 @@
-package model;
+package com.example.demo.nhom12.model;
 
 import lombok.*;
-import javax.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;

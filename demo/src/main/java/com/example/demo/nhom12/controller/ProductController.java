@@ -1,21 +1,23 @@
-package controller;
+package com.example.demo.nhom12.controller;
 
-import model.Product;
-import service.ProductServiceImplement;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.boot.web.servlet.error.ErrorController;
+
+import com.example.demo.nhom12.model.Product;
+import com.example.demo.nhom12.service.ProductServiceImplement;
 
 
-@RestController
 @RequestMapping(path = "productMaint1")
-public class ProductController implements ErrorController {
+public class ProductController {
 	@Autowired
 	private ProductServiceImplement productServiceImplement;
+	
+	public ProductController(ProductServiceImplement productServiceImplement) {
+		this.productServiceImplement = productServiceImplement;
+	}
 
 	@GetMapping(value = "")
 	public String home() {
@@ -31,13 +33,13 @@ public class ProductController implements ErrorController {
 
 	@GetMapping("/add")
 	public String showAddForm(Model model) {
-		model.addAttribute("product", new Product("", "", 0));
+		model.addAttribute("product", new Product());
 		return "add";
 	}
 
 	@PostMapping("/add")
 	public String addProduct(Product product) {
-		this.productServiceImplement.update(product);
+		this.productServiceImplement.save(product);
 		return "redirect:/productMaint1/displayProducts";
 	}
 
@@ -50,7 +52,7 @@ public class ProductController implements ErrorController {
 
 	@PostMapping("/update")
 	public String updateProduct(Product product) {
-		this.productServiceImplement.update(product);
+		this.productServiceImplement.save(product);
 		return "redirect:/productMaint1/displayProducts";
 	}
 	
@@ -65,6 +67,11 @@ public class ProductController implements ErrorController {
 	public String delete(@RequestParam String code, Model model) {
 		this.productServiceImplement.delete(code);
 		return "redirect:/productMaint1/displayProducts";
+	}
+	
+	@GetMapping("/error")
+	public String Error() {
+		return "redirect:/productMaint1";
 	}
 	
 	
