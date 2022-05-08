@@ -7,6 +7,6 @@ import model.Product;
 public interface ProductRepo extends JpaRepository<Product, String>{
 	List<Product> ProductList();
 	Product findByID(String ID);
-	Product save(Product product);
+	Product update(Product product);
 	void deleteByID(String ID);
 }

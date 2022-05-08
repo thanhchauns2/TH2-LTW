@@ -16,7 +16,7 @@ public class ProductServiceImplement implements ProductService {
         this.productRepo = productRepo;
     }
 
-    public List<Product> ProductsList() {
+    public List<Product> findAll() {
 
         return this.productRepo.ProductList();
     }

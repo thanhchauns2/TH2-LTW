@@ -8,11 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.boot.web.servlet.error.ErrorController;
 
 
-@Controller
+@RestController
 @RequestMapping(path = "productMaint1")
-public class ProductController {
+public class ProductController implements ErrorController {
 	@Autowired
 	private ProductServiceImplement productServiceImplement;
 
@@ -23,7 +24,7 @@ public class ProductController {
 
 	@GetMapping(value = "displayProducts")
 	public String viewProducts(Model model) {
-		List<Product> products = this.productServiceImplement.ProductsList();
+		List<Product> products = this.productServiceImplement.findAll();
 		model.addAttribute("products", products);
 		return "products";
 	}

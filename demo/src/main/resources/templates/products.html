@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td><span th:text="${product.ID}"> ID </span></td>
+            <td><span th:text="${product.description}"> Description </span></td>
+            <td><span th:text="${product.price}"> Price </span></td>
+            <td><a th:href="@{/productMaint1/update?code=} + ${product.code}">Edit</a>
+            	<a th:href="@{/productMaint1/confirm?code=} + ${product.code}">Delete</a></td>
+
+        </tr>
+    </table>
+    <a th:href="@{/productMaint1/add}">Add Product</a>
+</body>
+</html>

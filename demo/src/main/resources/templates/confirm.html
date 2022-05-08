@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Delte Product</title>
+	<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+	<h1>Are you sure you want to delete this product ?</h1>
+	<table>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td><span th:text="${product.ID}"> ID </span></td>
+            <td><span th:text="${product.description}"> Description </span></td>
+            <td><span th:text="${product.price}"> Price </span></td>
+        </tr>
+    </table>
+    <br>
+    <a th:href="@{/productMaint1/delete?code=} + ${product.code}">Yes</a>
+    <br>
+	<a th:href="@{/productMaint1/displayProducts}">No</a>
+	
+</body>
