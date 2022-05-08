@@ -3,33 +3,34 @@ package service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import repo.ProductRepo;
 
-import service.ProductService;
+import model.Product;
 
 @Service
 public class ProductServiceImplement implements ProductService {
 	
-	private final ProductRepository productRepository;
+	private final ProductRepo productRepo;
 
-    public ProductServiceImplement(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductServiceImplement(ProductRepo productRepo) {
+        this.productRepo = productRepo;
     }
 
-    public List<Product> getProducts() {
+    public List<Product> ProductsList() {
 
-        return this.productRepository.findAll();
-    }
-    
-    public Product find(String code) {
-    	return this.productRepository.findByCode(code);
+        return this.productRepo.ProductList();
     }
     
-    public void save(Product product) {
-    	this.productRepository.save(product);
+    public Product find(String ID) {
+    	return this.productRepo.findByID(ID);
+    }
+    
+    public void update(Product product) {
+    	this.productRepo.save(product);
     }
     
     @Transactional
-    public void delete(String code) {
-    	this.productRepository.deleteByCode(code);
+    public void delete(String ID) {
+    	this.productRepo.deleteByID(ID);
     }
 }
