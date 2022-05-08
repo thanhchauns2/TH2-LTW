@@ -3,10 +3,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Maintenaince {
+public class Th2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Maintenaince.class, args);
+		SpringApplication.run(Th2Application.class, args);
 	}
 	
 }
